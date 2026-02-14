@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juerg Hallenbarter | Portfolio</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: 1.2rem;
-      color: #666;
-    }
-  </style>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Jürg Georg Hallenbarter · Home</title>
+		<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div>
-    <h1>Website is running</h1>
-    <p>Still in development. Check back soon!</p>
-  </div>
+<div class="container">
+		<nav>
+				<a href="index.html" data-i18n="nav.home">Home</a>
+				<a href="education.html" data-i18n="nav.education">Education</a>
+				<a href="skills.html" data-i18n="nav.skills">Skills</a>
+				<a href="projects.html" data-i18n="nav.projects">Projects</a>
+				<a href="hobbies.html" data-i18n="nav.hobbies">Hobbies</a>
+				<div class="lang-switch">
+						<select id="lang-select">
+								<option value="de">DE</option>
+								<option value="en" selected>EN</option>
+								<option value="fr">FR</option>
+						</select>
+				</div>
+		</nav>
+
+		<!-- Profile image -->
+		<img src="Profilbild.jpg" alt="Jürg Georg Hallenbarter" class="profile-img">
+
+		<h1 data-i18n="home.name">Jürg Georg Hallenbarter</h1>
+		<div class="subhead" data-i18n="home.title">Informatiker Applikationsentwicklung</div>
+		<p class="intro" data-i18n="home.intro">Application developer apprentice with a passion for clean code, automation, and continuous learning. Currently in my 2nd year at EMVs.</p>
+
+		<a class="gh-link" href="https://github.com/JGH0" target="_blank">📁 GitHub / JGH0</a>
+
+		<div class="quick-info">
+				<h2 data-i18n="home.quickTitle">Quick overview</h2>
+				<ul>
+						<li><span data-i18n="home.quick1">🎓 BFO Visp (2024–)</span></li>
+						<li><span data-i18n="home.quick2">🌎 C2 English (EF, NY & Toronto)</span></li>
+						<li><span data-i18n="home.quick3">💻 Java · Python · PHP · Kotlin</span></li>
+				</ul>
+		</div>
+
+		<div class="footer">
+				<a href="https://github.com/JGH0" target="_blank">github.com/JGH0</a>
+		</div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jürg · Hobbies</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+	<nav>
+		<a href="index.html" data-i18n="nav.home">Home</a>
+		<a href="education.html" data-i18n="nav.education">Education</a>
+		<a href="skills.html" data-i18n="nav.skills">Skills</a>
+		<a href="projects.html" data-i18n="nav.projects">Projects</a>
+		<a href="hobbies.html" data-i18n="nav.hobbies">Hobbies</a>
+		<div class="lang-switch">
+			<select id="lang-select">
+				<option value="de">DE</option>
+				<option value="en" selected>EN</option>
+				<option value="fr">FR</option>
+			</select>
+		</div>
+	</nav>
+
+	<h1 data-i18n="hobbies.title">⚡ Hobbies & free time</h1>
+
+	<div class="hobby-grid">
+		<div class="hobby-card">
+			🥋 <span data-i18n="hobbies.budo">Yoseikan Budo</span>
+			<small data-i18n="hobbies.budoSmall">martial art</small>
+		</div>
+		<div class="hobby-card">
+			🤿 <span data-i18n="hobbies.diving">Tauchen</span>
+			<small data-i18n="hobbies.divingSmall">diving</small>
+		</div>
+		<div class="hobby-card">
+			⛷️ <span data-i18n="hobbies.ski">Ski / Snowboard</span>
+			<small data-i18n="hobbies.skiSmall">winter sports</small>
+		</div>
+	</div>
+
+	<div class="quote">
+		<p data-i18n="hobbies.quote">“Balance between code and outdoor adventures.”</p>
+	</div>
+
+	<div class="footer">
+		<a href="https://github.com/JGH0" target="_blank">github.com/JGH0</a>
+	</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
