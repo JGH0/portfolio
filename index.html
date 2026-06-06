@@ -1,50 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Jürg Georg Hallenbarter · Home</title>
+		<title>Jurg Georg Hallenbarter</title>
 		<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
-		<nav>
-				<a href="index.html" data-i18n="nav.home">Home</a>
-				<a href="education.html" data-i18n="nav.education">Education</a>
-				<a href="skills.html" data-i18n="nav.skills">Skills</a>
-				<a href="projects.html" data-i18n="nav.projects">Projects</a>
-				<a href="hobbies.html" data-i18n="nav.hobbies">Hobbies</a>
-				<div class="lang-switch">
-						<select id="lang-select">
-								<option value="de">DE</option>
-								<option value="en" selected>EN</option>
-								<option value="fr">FR</option>
-						</select>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="#home">Home</a>
+				<a href="#projects">Projects</a>
+				<a href="#skills">Skills</a>
+				<a href="#education">Education</a>
+				<a href="#hobbies">Hobbies</a>
+			</nav>
+		</header>
+
+		<main>
+
+			<!-- HOME -->
+			<section id="home">
+				<div class="profile-img">
+					<img src="images/profile.jpg" alt="Profile photo">
 				</div>
-		</nav>
+				<h1>Jürg Georg Hallenbarter</h1>
+				<p class="subtitle">Informatiker Applikationsentwicklung</p>
+				<p class="bio">Application developer apprentice. Clean code, automation, continuous learning. 2nd year at EMVs.</p>
+				<a class="gh-link" href="https://github.com/JGH0" target="_blank">github.com/JGH0</a>
 
-		<!-- Profile image -->
-		<img src="Profilbild.jpg" alt="Jürg Georg Hallenbarter" class="profile-img">
+				<div class="quick-info">
+					<div>
+						<span class="label">Education</span>
+						<span>BFO Visp (2024-)</span>
+					</div>
+					<div>
+						<span class="label">English</span>
+						<span>C2 certified (EF, NY &amp; Toronto)</span>
+					</div>
+					<div>
+						<span class="label">Stack</span>
+						<span>Java, Python, PHP, Kotlin</span>
+					</div>
+				</div>
+			</section>
 
-		<h1 data-i18n="home.name">Jürg Georg Hallenbarter</h1>
-		<div class="subhead" data-i18n="home.title">Informatiker Applikationsentwicklung</div>
-		<p class="intro" data-i18n="home.intro">Application developer apprentice with a passion for clean code, automation, and continuous learning. Currently in my 2nd year at EMVs.</p>
+			<!-- PROJECTS -->
+			<section id="projects">
+				<h2>Projects</h2>
+				<p class="section-desc">Fetched live from GitHub. Things I have built.</p>
+				<div id="project-grid" class="project-grid">
+					<p class="loading">Loading projects...</p>
+				</div>
+			</section>
 
-		<a class="gh-link" href="https://github.com/JGH0" target="_blank">📁 GitHub / JGH0</a>
+			<!-- SKILLS -->
+			<section id="skills">
+				<h2>Skills</h2>
+				<div class="skills-layout">
+					<div class="skill-group">
+						<h3>Languages &amp; Frameworks</h3>
+						<ul>
+							<li>Java</li>
+							<li>Python</li>
+							<li>Kotlin</li>
+							<li>PHP</li>
+							<li>Laravel</li>
+							<li>JavaScript</li>
+							<li>ASP Classic / VBScript</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h3>Web &amp; Database</h3>
+						<ul>
+							<li>HTML / CSS</li>
+							<li>SQL</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h3>Scripting &amp; Automation</h3>
+						<ul>
+							<li>Bash</li>
+							<li>PowerShell</li>
+							<li>Linux / Unix</li>
+						</ul>
+					</div>
+					<div class="skill-group">
+						<h3>Mobile &amp; Other</h3>
+						<ul>
+							<li>Kotlin / App dev</li>
+							<li>Skripting</li>
+						</ul>
+					</div>
+					<div class="skill-group languages">
+						<h3>Languages</h3>
+						<ul>
+							<li>German (native)</li>
+							<li>English (C1-C2, certified C2)</li>
+						</ul>
+					</div>
+				</div>
+			</section>
 
-		<div class="quick-info">
-				<h2 data-i18n="home.quickTitle">Quick overview</h2>
-				<ul>
-						<li><span data-i18n="home.quick1">🎓 BFO Visp (2024–)</span></li>
-						<li><span data-i18n="home.quick2">🌎 C2 English (EF, NY & Toronto)</span></li>
-						<li><span data-i18n="home.quick3">💻 Java · Python · PHP · Kotlin</span></li>
-				</ul>
-		</div>
+			<!-- EDUCATION -->
+			<section id="education">
+				<h2>Education</h2>
 
-		<div class="footer">
-				<a href="https://github.com/JGH0" target="_blank">github.com/JGH0</a>
-		</div>
-</div>
-<script src="script.js"></script>
-</body>
+				<div class="timeline">
+					<div class="entry">
+						<span class="year">2024-present</span>
+						<div>
+							<strong>Informatiker Applikationsentwicklung</strong>
+							<span class="org">Berufsschule BFO Visp</span>
+							<p>Vocational school, software development focus.</p>
+						</div>
+					</div>
+					<div class="entry">
+						<span class="year">2024-2025</span>
+						<div>
+							<strong>Cortec AG Visp</strong>
+							<span class="org">1st year training company</span>
+							<p>First year of apprenticeship.</p>
+						</div>
+					</div>
+					<div class="entry">
+						<span class="year">2025-present</span>
+						<div>
+							<strong>EMVs</strong>
+							<span class="org">Current training company</span>
+							<p>Expanding practical skills in application development.</p>
+						</div>
+					</div>
+					<div class="entry">
+						<span class="year">2023-2024</span>
+						<div>
+							<strong>English Immersion</strong>
+							<span class="org">EF International Language School</span>
+							<p>New York (3 months) &middot; Toronto, Canada (6 months). Outcome: C2 certified.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="reference">
+					<span class="label">Reference</span>
+					<p>Alain Kippel &mdash; EMVs Ausbilder &amp; Klassenlehrperson, BFO Visp</p>
+				</div>
+			</section>
+
+			<!-- HOBBIES -->
+			<section id="hobbies">
+				<h2>Hobbies</h2>
+
+				<div class="hobby-grid">
+					<div class="hobby-card">
+						<div class="hobby-img">
+							<img src="images/hobby-martial-arts.jpg" alt="Yoseikan Budo placeholder">
+						</div>
+						<h3>Yoseikan Budo</h3>
+						<p>Martial art</p>
+					</div>
+					<div class="hobby-card">
+						<div class="hobby-img">
+							<img src="images/hobby-diving.jpg" alt="Diving placeholder">
+						</div>
+						<h3>Diving</h3>
+						<p>Scuba diving</p>
+					</div>
+					<div class="hobby-card">
+						<div class="hobby-img">
+							<img src="images/hobby-ski.jpg" alt="Skiing placeholder">
+						</div>
+						<h3>Ski / Snowboard</h3>
+						<p>Winter sports</p>
+					</div>
+				</div>
+
+				<p class="quote">&ldquo;Balance between code and outdoor adventures.&rdquo;</p>
+			</section>
+
+		</main>
+
+		<footer>
+			<a href="https://github.com/JGH0" target="_blank">github.com/JGH0</a>
+		</footer>
+
+		<script src="app.js"></script>
+	</body>
 </html>

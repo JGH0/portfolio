@@ -1,11 +1,18 @@
 # Portfolio
 
-This repository contains the source code for my personal portfolio website.
+Redesigned personal portfolio. Single-page, dark mode, minimal CSS.
 
-The website is publicly available at:
+- Projects fetched live from [GitHub API](https://api.github.com/users/JGH0/repos)
+- Image placeholders in `images/` -- replace with your own
+- English only, no translation overhead
 
-https://juerg.hallenbarter.org
+### To use
 
-It is a fully static site built with **HTML**, **CSS**, and **JavaScript**, intended to present information about me, my projects, and my technical background in a clear and minimal form.
+Replace images in the `images/` folder:
+- `profile.svg` or `images/profile-real.jpg` -- your profile photo
+- `project-*.jpg` -- one per GitHub repo (lowercase repo name)
+- `hobby-*.jpg` -- martial-arts, diving, ski
 
-(if you are reading this the website is not yet online)
+### Tech
+
+Vanilla HTML, CSS, JS. No frameworks, no build step. Open `index.html` directly or serve with any HTTP server.
