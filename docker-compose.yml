@@ -1,22 +1,9 @@
-version: "3.8"
-
 services:
   nginx:
     image: nginx:alpine
     container_name: portfolio-nginx
+    ports:
+      - "801:80"
     volumes:
-      - /srv/portfolio:/usr/share/nginx/html:ro
-    restart: unless-stopped
-
-  git-sync:
-    image: alpine/git
-    container_name: portfolio-git-sync
-    volumes:
-      - /srv/portfolio:/repo
-    command: >
-      sh -c "while true; do
-      cd /repo &&
-      git pull --rebase --quiet;
-      sleep 120;
-      done"
+      - .:/usr/share/nginx/html:ro
     restart: unless-stopped
