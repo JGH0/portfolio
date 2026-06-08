@@ -1,9 +1,10 @@
 let img1, img2;
-let processing = false;
 let pass = 1;
 let currentRow = 0;
-let isDrawing = false;
-let currentDirection = 1;
+
+// start with top left to bottom right
+let isDrawing = true;
+let currentDirection = 6;
 let rows = 1;
 let cols = 3;
 
