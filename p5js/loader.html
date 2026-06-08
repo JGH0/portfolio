@@ -1,58 +1,58 @@
 <!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<script src="js/p5.js"></script>
-		</head>
-		<body style="background-color: beige; margin: 0;">
-			<div id="error" style="color: red; padding: 20px; display: none;"></div>
-			<script>
-				const params = new URLSearchParams(window.location.search);
-				let sketchName = params.get('sketch');
-				if (!sketchName) {
-					sketchName = params.get('sketches');
+<html lang="en">
+	<head>
+		<script src="js/p5.js"></script>
+	</head>
+	<body style="background-color: beige; margin: 0;">
+		<div id="error" style="color: red; padding: 20px; display: none;"></div>
+		<script>
+			const params = new URLSearchParams(window.location.search);
+			let sketchName = params.get('sketch');
+			if (!sketchName) {
+				sketchName = params.get('sketches');
+			}
+
+			if (sketchName) {
+				if (!sketchName.endsWith('.js')) {
+					sketchName += '.js';
 				}
-				
-				if (sketchName) {
-					if (!sketchName.endsWith('.js')) {
-						sketchName += '.js';
-					}
-					
-					const sketchPath = 'sketches/' + sketchName;
-					console.log('Loading sketch:', sketchPath);
-					
-					// Load the sketch directly
-					const script = document.createElement('script');
-					script.src = sketchPath;
-					script.onload = () => {
-						console.log('Sketch loaded successfully');
-					};
-					script.onerror = () => {
-						console.error('Failed to load sketch:', sketchPath);
-						document.getElementById('error').style.display = 'block';
-						document.getElementById('error').textContent = `Error loading sketch: ${sketchName}`;
-					};
-					document.head.appendChild(script);
-				} else {
+
+				const sketchPath = 'sketches/' + sketchName;
+				console.log('Loading sketch:', sketchPath);
+
+				// Load the sketch directly
+				const script = document.createElement('script');
+				script.src = sketchPath;
+				script.onload = () => {
+					console.log('Sketch loaded successfully');
+				};
+				script.onerror = () => {
+					console.error('Failed to load sketch:', sketchPath);
 					document.getElementById('error').style.display = 'block';
-					document.getElementById('error').textContent = 'No sketch specified. Use ?sketch=filename.js';
-				}
-			</script>
-		</body>
-		<style>
-			body {
-				margin: 0;
-				overflow: hidden;
+					document.getElementById('error').textContent = `Error loading sketch: ${sketchName}`;
+				};
+				document.head.appendChild(script);
+			} else {
+				document.getElementById('error').style.display = 'block';
+				document.getElementById('error').textContent = 'No sketch specified. Use ?sketch=filename.js';
 			}
-			#error {
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				background: white;
-				border: 2px solid red;
-				border-radius: 8px;
-				padding: 20px;
-				max-width: 400px;
-			}
-		</style>
+		</script>
+	</body>
+	<style>
+		body {
+			margin: 0;
+			overflow: hidden;
+		}
+		#error {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: white;
+			border: 2px solid red;
+			border-radius: 8px;
+			padding: 20px;
+			max-width: 400px;
+		}
+	</style>
 </html>
