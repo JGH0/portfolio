@@ -2,4 +2,4 @@
 
 personal portfolio.
 
-juerg.hallenbarter.org
+https://juerg.hallenbarter.org
