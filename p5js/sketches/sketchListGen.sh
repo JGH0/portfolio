@@ -1,0 +1,1 @@
+ls -F *.js -m | tee sketchList.txt

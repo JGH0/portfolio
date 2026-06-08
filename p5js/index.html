@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>p5.js library · click any gallery to open full library</title>
+		<style>
+			h1, h2 {
+				text-align: center;
+				font-family: cursive, serif;
+			}
+			body {
+				background-color: beige;
+				margin: 0;
+				padding: 20px;
+			}
+			.liberay {
+				height: 600px;
+				width: 600px;
+			}
+			iframe {
+				height: 100%;
+				width: 100%;
+				border: none;
+				margin: 0;
+				cursor: pointer;
+			}
+			.liberayDiv {
+				width: 470px;
+				margin: 10px;
+				padding: 10px;
+				border: 2px solid rgb(67, 0, 67);
+				border-radius: 10px;
+				box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+				display: inline-block;
+				vertical-align: top;
+				transition: all 0.2s ease;
+				cursor: pointer;
+			}
+			.liberayDiv:hover {
+				background-color: rgb(67, 0, 67);
+				color: white;
+			}
+			.liberayDiv:hover h2 {
+				color: #ffecb3;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>p5.js liberay by me</h1>
+
+		<div class="liberayDiv">
+			<h2>AbstractAlgorithms</h2>
+			<div class="liberay">
+				<iframe src="liberay.html?sketches=Cubes.js,calmCircles.js,labyrinth.js,AbstractAlgorithm.js&size=200" frameborder="0"></iframe>
+			</div>
+		</div>
+
+		<div class="liberayDiv">
+			<h2>Agents doing stuff</h2>
+			<div class="liberay">
+				<iframe src="liberay.html?sketches=snake.js,MarkovChain.js,snakeAIEvolution.js,GameOfLive.js&size=200" frameborder="0"></iframe>
+			</div>
+		</div>
+
+		<div class="liberayDiv">
+			<h2>Images manipulation</h2>
+			<div class="liberay">
+				<iframe src="liberay.html?sketches=imageOverlap,2images.js,image.js,imageNoice.js,L-System.js&size=200" frameborder="0"></iframe>
+			</div>
+		</div>
+
+		<script>
+			(function() {
+				// make each .liberayDiv (including the whole card) open its embedded library in a new tab on click
+				const containers = document.querySelectorAll('.liberayDiv');
+
+				function enableFullLibraryOnClick(container) {
+					const iframe = container.querySelector('iframe');
+					if (!iframe) return;
+
+					const fullLibraryUrl = iframe.src;
+					if (!fullLibraryUrl || fullLibraryUrl === 'about:blank') return;
+
+					// --- try to inject click listener inside the iframe (same‑origin) ---
+					// this makes any click inside the gallery (sketches, background) open the full library
+					const tryInjectInside = () => {
+						try {
+							const doc = iframe.contentDocument || iframe.contentWindow?.document;
+							if (!doc) return false;
+							if (iframe.hasAttribute('data-click-injected')) return true;
+
+							const script = doc.createElement('script');
+							script.textContent = `
+								(function() {
+									document.addEventListener('click', function() {
+										const targetUrl = window.location.href;
+										if (targetUrl && targetUrl !== 'about:blank') {
+											window.parent.open(targetUrl, '_blank');
+										}
+									});
+								})();
+							`;
+							const target = doc.head || doc.body || doc.documentElement;
+							if (target) {
+								target.appendChild(script);
+								iframe.setAttribute('data-click-injected', 'true');
+								console.log('✅ click-to-open enabled inside iframe:', fullLibraryUrl);
+								return true;
+							}
+						} catch (err) {
+							console.warn('⚠️ cannot inject inside iframe, using container fallback:', err);
+						}
+						return false;
+					};
+
+					// inject when iframe is ready
+					if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+						tryInjectInside();
+					} else {
+						iframe.addEventListener('load', tryInjectInside);
+						setTimeout(tryInjectInside, 300);
+					}
+
+					// --- container fallback: ensure the whole div (including border, h2, etc.) works ---
+					if (!container.hasAttribute('data-container-click')) {
+						container.addEventListener('click', (event) => {
+							window.open(fullLibraryUrl, '_blank');
+						});
+						container.setAttribute('data-container-click', 'true');
+					}
+				}
+
+				// apply to each gallery card
+				containers.forEach(enableFullLibraryOnClick);
+				console.log(' ready — click anywhere on a gallery card or inside it to open the full library in a new tab.');
+			})();
+		</script>
+
+		<script type="module" src="index.js"></script>
+
+	</body>
+</html>

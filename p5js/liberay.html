@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+	</body>
+	<style>
+		body {
+			margin: 0;
+			background: transparent;
+		}
+		iframe {
+			margin: 10px;
+			padding: 0;
+			border-width: 5px;
+			border-color: rgb(67, 0, 67);
+			border-style: groove;
+			border-radius: 10%;
+			box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<script>
+	(function() {
+		const params = new URLSearchParams(window.location.search);
+		const sketchList = params.get('sketches'); // e.g. library.html?sketches=2images.js,calmCircles.js
+		const sketchSize = params.get('size');	 // e.g. library.html?size=500
+
+		if (!sketchList) {
+			console.error('No sketches parameter provided');
+			return;
+		}
+
+		const sketches = sketchList.split(',');
+		const sizeValue = (sketchSize && !isNaN(parseInt(sketchSize))) ? parseInt(sketchSize) : 500;
+
+		// ----- Created with ispiration from LLM AI -----
+		function enableClickToOpenFullPage(iframeElement, sketchName) {
+			if (!iframeElement) return;
+
+
+			const tryInjectInside = () => {
+				try {
+					const doc = iframeElement.contentDocument || iframeElement.contentWindow?.document;
+					if (!doc) return false;
+
+					if (iframeElement.hasAttribute('data-click-injected')) return true;
+
+					const script = doc.createElement('script');
+					script.textContent = `
+						(function() {
+							// When user clicks anywhere inside the sketch content, open the same URL in a new tab
+							document.addEventListener('click', function(e) {
+								// Use window.parent.open to open the full loader page in a new tab
+								const fullUrl = window.location.href;
+								if (fullUrl && fullUrl !== 'about:blank') {
+									window.parent.open(fullUrl, '_blank');
+								}
+							});
+						})();
+					`;
+					const target = doc.head || doc.body || doc.documentElement;
+					if (target) {
+						target.appendChild(script);
+						iframeElement.setAttribute('data-click-injected', 'true');
+						console.log(`✓ click-to-open enabled (inside) for ${sketchName}`);
+						return true;
+					}
+				} catch (err) {
+					console.warn(`⚠️ cannot inject inside iframe (${sketchName}), using fallback`, err);
+				}
+				return false;
+			};
+
+			// Fallback
+			function addElementClickFallback() {
+				if (iframeElement.hasAttribute('data-fallback-click')) return;
+				iframeElement.addEventListener('click', (e) => {
+					if (iframeElement.src) {
+						window.open(iframeElement.src, '_blank');
+					}
+				});
+				iframeElement.setAttribute('data-fallback-click', 'true');
+				console.log(`✓ click-to-open enabled (iframe border fallback) for ${sketchName}`);
+			}
+
+			if (iframeElement.contentDocument && iframeElement.contentDocument.readyState === 'complete') {
+				if (!tryInjectInside()) addElementClickFallback();
+			} else {
+				iframeElement.addEventListener('load', () => {
+					if (!tryInjectInside()) addElementClickFallback();
+				});
+				setTimeout(() => {
+					if (!tryInjectInside()) addElementClickFallback();
+				}, 100);
+			}
+		}
+
+		for (let sketch of sketches) {
+			const trimmedSketch = sketch.trim();
+			if (!trimmedSketch) continue;
+
+			const iframe = document.createElement('iframe');
+			iframe.src = `loader.html?sketches=${encodeURIComponent(trimmedSketch)}`;
+
+			iframe.style.width = sizeValue + 'px';
+			iframe.style.height = sizeValue + 'px';
+
+			iframe.onload = () => {
+				console.log(`Loaded iframe for ${trimmedSketch}`);
+			};
+			iframe.onerror = () => {
+				console.error(`Failed to load iframe for ${trimmedSketch}`);
+			};
+
+			enableClickToOpenFullPage(iframe, trimmedSketch);
+
+			document.body.appendChild(iframe);
+		}
+	})();
+</script>
+</body>
+</html>
