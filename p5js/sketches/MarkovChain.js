@@ -11,9 +11,7 @@ async function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(255, 255, 230);
 
-	console.log(trainingText);
 	trainingText = splitText(trainingText);
-	console.log(trainingText);
 
 	wordToIndex = {};
 	wordList = [];
@@ -33,19 +31,13 @@ async function setup() {
 			let idx = wordToIndex[word];
 			wordList[idx][1].push(nextWord);
 		}
-
-		if (i % 1000 === 0) {
-			console.log('i', i);
-		}
 	}
 
-	console.log(wordList);
 	startWord = wordList[round(random(0, wordList.length - 1))][0];
 	finalText = startWord;
 
 	for (let i = 0; i < 100; i++) {
 		startWord = generateNextWord(startWord);
-		console.log(startWord);
 		if (startWord === '.' || startWord === ',' || startWord === ';' || startWord === ':' || startWord === '!' || startWord === '?') {
 			finalText += startWord;
 		} else {
