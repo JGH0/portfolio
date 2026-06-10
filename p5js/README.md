@@ -93,7 +93,7 @@ A hybrid of maze generation and real-time fluid simulation.
 
 ![MarkovChan generated Text](image-6.png)
 
-A Markov-chain text generator trained on the source text of "50 Shades of Grey".
+A Markov-chain text generator trained on the source text of The bible.
 Builds a word-level transition table from the corpus, then generates a 100-word
 passage by walking the chain. The output is rendered directly onto the canvas -
 a collision of literary trash and statistical language modeling.

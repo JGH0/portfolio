@@ -7,7 +7,7 @@ let cleanedText = "";
 let wordToIndex = {};
 
 async function setup() {
-	trainingText = await loadStrings('assets/text/50shades.txt');
+	trainingText = await loadStrings('assets/text/cpdv_text_only.txt');
 	createCanvas(windowWidth, windowHeight);
 	background(255, 255, 230);
 
